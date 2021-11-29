@@ -1,3 +1,5 @@
+--animation module
+
 Object = require("dep.classic")
 require("engine.vector2")
 AnimSprite = Object:extend()

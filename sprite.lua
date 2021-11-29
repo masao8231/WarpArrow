@@ -1,3 +1,5 @@
+--sprite module, for static objects
+
 Object = require("dep.classic")
 require("engine.vector2")
 Sprite = Object:extend()
