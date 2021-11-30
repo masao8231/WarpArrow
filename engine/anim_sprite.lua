@@ -1,13 +1,13 @@
 --animation module
 
-Object = require("dep.classic")
+T_dobject = require("engine.2dobject")
 require("engine.vector2")
-AnimSprite = Object:extend()
+AnimSprite = T_dobject:extend()
 
 
 --loads the entire animation cycle
 function AnimSprite:new(h, w, x, y, source, duration)
-    self.position = Vector2(x, y)
+    AnimSprite.super.new(self, x, y)
     self.anim = {}
 
     --time parameters 
@@ -37,7 +37,6 @@ function AnimSprite:update( dt )
 end
 
 function AnimSprite:draw()
-    
     local spr_index = math.floor(self.current_time/self.duration * #self.anim.quads) + 1 
-    love.graphics.draw(self.anim.spritesheet, self.anim.quads[spr_index], self.x, self.y)
+    love.graphics.draw(self.anim.spritesheet, self.anim.quads[spr_index], self.position.x, self.position.y)
 end

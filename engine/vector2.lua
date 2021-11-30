@@ -26,7 +26,7 @@ end
 
 --You can print the vector by lua built in print function 
 function Vector2:__tostring()
-    return self.x .. ", " .. self.y
+    return "Vector2("..self.x .. ", " .. self.y..")"
 end
 
 --basic scalar operations 

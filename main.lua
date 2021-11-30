@@ -1,6 +1,7 @@
 require("engine.vector2")
 require("engine.sprite")
-require("engine.anim_sprite")
+require("engine.2dobject")
+require("engine.player")
 
 function love.load()
     local p = Vector2(2,4)
@@ -9,15 +10,14 @@ function love.load()
     print(normalp:lenght())
 
     sprite = Sprite(200, 100, love.graphics.newImage("assets/placeholders/sprites/brick.png"))
-    anim = AnimSprite(74, 42, 10, 100, love.graphics.newImage("assets/placeholders/sprites/anim_cycle.png"))
-
+    player = Player(10, 10, love.graphics.newImage("assets/placeholders/sprites/anim_cycle.png"), 42, 74)
 end
 
 function love.update(dt)
-    anim:update(dt)
+    player:update(dt)
 end
 
 function love.draw()  
     sprite:draw()
-    anim:draw()
+    player:draw()
 end
