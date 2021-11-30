@@ -1,10 +1,10 @@
-T_dobject = require("engine.2dobject")
+require("engine.2dbody")
 require("engine.anim_sprite")
-Player = T_dobject:extend()
+Player = Body2D:extend()
 
 --creating the player
 function Player:new(x, y, spritesheet, w, h)
-    self.super.new(self, x, y)
+    Player.super.new(self, x, y)
     self.anim = AnimSprite(h, w, x, y, spritesheet)
 end
 

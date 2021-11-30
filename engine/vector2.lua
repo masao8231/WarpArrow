@@ -24,6 +24,15 @@ function Vector2:normalize()
     return normal
 end
 
+function Vector2:translate(vector)
+    assert(type(vector) == "table", "The given value must be a vector")
+    return Vector2(vector.x - self.x, vector.y - self.y)
+end
+
+function Vector2:translateOrigin()
+    return Vector2(0 - self.x, 0 - self.y)
+end
+
 --You can print the vector by lua built in print function 
 function Vector2:__tostring()
     return "Vector2("..self.x .. ", " .. self.y..")"

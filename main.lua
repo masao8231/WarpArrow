@@ -2,15 +2,25 @@ require("engine.vector2")
 require("engine.sprite")
 require("engine.2dobject")
 require("engine.player")
+require("engine.tile")
+require("engine.shape")
 
 map = {
-    {1,1,1,1,1,1,1,1,1,1},
-    {1,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,1},
-    {1,1,1,1,1,1,1,1,1,1},
+
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 }
 
 tiles = {}
@@ -24,31 +34,21 @@ function love.load()
     sprite = Sprite(200, 100, love.graphics.newImage("assets/placeholders/sprites/brick.png"))
     player = Player(10, 10, love.graphics.newImage("assets/placeholders/sprites/anim_cycle.png"), 42, 74)
     tile = love.graphics.newImage("assets/placeholders/tile/tile.png")
-    
-    --loading tiles
-    line = 0
-    for y = 1, #map do
-        line = line + 1
-        for x=1, #map[y] do 
-            if (map[y][x] == 1) then 
-                table.insert(tiles, Vector2((x * tile:getWidth()) - tile:getWidth(), (y * tile:getHeight()) - tile:getHeight()))
-            end 
-        end 
-    end
-    print(row)
+    tilemap = Tiles(0,0, map, tile)
+
+
+    shape = Shape2D(500, 400, Vector2(1,1), Vector2(100, 200), Vector2(400, 500))
 
 end
 
 function love.update(dt)
     player:update(dt)
+    shape:update(dt)
 end
 
 function love.draw()  
     sprite:draw()
     player:draw()
-
-    --draw the tiles 
-    for i=1, #tiles do 
-        love.graphics.draw(tile, tiles[i].x, tiles[i].y)
-    end
+    tilemap:draw()
+    shape:draw()
 end

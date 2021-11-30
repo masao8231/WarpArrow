@@ -1,11 +1,11 @@
 
-T_dobject = require("engine.2dobject")
+require("engine.2dobject")
 require("engine.vector2")
-Sprite = T_dobject:extend()
+Sprite = Object2D:extend()
 
 --create a new sprite (with love.graphics.newImage)
 function Sprite:new(x, y, image)
-  self.super.new(self, x, y)
+  Sprite.super.new(self, x, y)
   self.image = image
 end
 

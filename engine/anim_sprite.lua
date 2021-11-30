@@ -1,8 +1,8 @@
 --animation module
 
-T_dobject = require("engine.2dobject")
+require("engine.2dobject")
 require("engine.vector2")
-AnimSprite = T_dobject:extend()
+AnimSprite = Object2D:extend()
 
 
 --loads the entire animation cycle
