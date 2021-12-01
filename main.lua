@@ -8,6 +8,8 @@ require("engine.rectangle")
 require("engine.physics.collisionShape")
 require("engine.physics.collisionRect")
 
+SAT = require("engine.physics.sat")
+
 map = {
 
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -37,7 +39,7 @@ tiles = {}
 
 function love.load()
     local p = Vector2(2,4)
-    local normalp = p:normalize()
+    local normalp = p:unit()
     print(type(p))
     print(normalp:lenght())
 
@@ -51,7 +53,7 @@ function love.load()
     rectangle = Rectangle2D(100, 200, 30, 40, true)
 
     c_shape = CollisionShape2D(100 * 2, 200 * 2, true, Vector2(200 * 2, 100 * 2), Vector2(200 * 2, 200* 2))
-    c_rect = CollisionRect2D(100 * 2, 230 * 2, 30, 40, true) 
+    c_rect = CollisionRect2D(190 * 2, 140 * 2, 30, 40, true) 
 
 end
 
@@ -59,6 +61,8 @@ function love.update(dt)
     player:update(dt)
     shape:update(dt)
     rectangle:update(dt)
+    c_rect:update(dt)
+    print(SAT.isColliding(c_rect, c_shape))
 end
 
 function love.draw()  

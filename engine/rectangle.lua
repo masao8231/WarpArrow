@@ -11,20 +11,20 @@ function Rectangle2D:new(x, y, w, h, draw)
     self.h = h 
     self.drawable = draw or false 
     --calculate the vertices 
-    self.vertex = {}
+    self.v_points = {}
     --there's no need to use loops for this one
-    self.vertex[#self.vertex+1] = self.position
-    self.vertex[#self.vertex+1] = Vector2(self.position.x, self.position.y + self.h)
-    self.vertex[#self.vertex+1] = Vector2(self.position.x + self.w, self.position.y + self.h)
-    self.vertex[#self.vertex+1] = Vector2(self.position.x + self.w, self.position.y)
+    self.v_points[#self.v_points+1] = self.position
+    self.v_points[#self.v_points+1] = Vector2(self.position.x, self.position.y + self.h)
+    self.v_points[#self.v_points+1] = Vector2(self.position.x + self.w, self.position.y + self.h)
+    self.v_points[#self.v_points+1] = Vector2(self.position.x + self.w, self.position.y)
 
 end
 
 --move function
 function Rectangle2D:move(x, y, dt)
     self.position = Vector2(self.position.x + x * dt, self.position.y + y * dt)
-    for i, v in ipairs(self.vertex) do 
-        self.vertex[i] = Vector2(v.x + x * dt, v.y + y * dt)
+    for i, v in ipairs(self.v_points) do 
+        self.v_points[i] = Vector2(v.x + x * dt, v.y + y * dt)
     end 
 end
 
@@ -36,7 +36,7 @@ end
 --draw function 
 function Rectangle2D:draw()
     if self.drawable == true then 
-        for i, v in ipairs(self.vertex) do 
+        for i, v in ipairs(self.v_points) do 
             love.graphics.circle("fill", v.x, v.y, 5)
         end 
 

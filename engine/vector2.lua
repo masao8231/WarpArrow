@@ -12,14 +12,28 @@ function Vector2:lenght()
     return math.sqrt(self.x^2 + self.y^2)
 end
 
+--projection of self along the given vector  
+function Vector2:projection(vector)
+    --calculating a vector's projection 
+    local dot_pr = self:dot_prod(vector)
+    local v_lenght = vector:lenght()
+
+    return vector * (dot_pr)/(v_lenght^2)
+end
+
 --Dot product 
 function Vector2:dot_prod(vector)
     assert(type(vector) == "table", "The given value must be a vector")
     return self.x * vector.x + self.y * vector.y
 end
 
+--get the normal vector that is perpendicular 
+function Vector2:normal()
+    return Vector2(self.y, -self.x)
+end
+
 --Normalizes the vector 
-function Vector2:normalize()
+function Vector2:unit()
     local normal = self/self:lenght()
     return normal
 end
