@@ -4,11 +4,12 @@ require("engine.vector2")
 Rectangle2D = Object2D:extend()
 
 --creating a rectangle 
-function Rectangle2D:new(x, y, w, h)
+function Rectangle2D:new(x, y, w, h, draw)
     Rectangle2D.super.new(self, x, y)
     --set the width and height 
     self.w = w 
     self.h = h 
+    self.drawable = draw or false 
     --calculate the vertices 
     self.vertex = {}
     --there's no need to use loops for this one
@@ -34,9 +35,11 @@ end
 
 --draw function 
 function Rectangle2D:draw()
-    for i, v in ipairs(self.vertex) do 
-        love.graphics.circle("fill", v.x, v.y, 5)
-    end 
+    if self.drawable == true then 
+        for i, v in ipairs(self.vertex) do 
+            love.graphics.circle("fill", v.x, v.y, 5)
+        end 
 
-    love.graphics.rectangle("line", self.position.x, self.position.y, self.w, self.h)
+        love.graphics.rectangle("line", self.position.x, self.position.y, self.w, self.h)
+    end 
 end

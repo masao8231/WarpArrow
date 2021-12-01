@@ -38,8 +38,8 @@ function love.load()
     tilemap = Tiles(0,0, map, tile)
 
 
-    shape = Shape2D(100, 200, Vector2(200, 100), Vector2(200, 200))
-    rectangle = Rectangle2D(100, 200, 30, 40)
+    shape = Shape2D(100, 200, true, Vector2(200, 100), Vector2(200, 200))
+    rectangle = Rectangle2D(100, 200, 30, 40, true)
 
 end
 

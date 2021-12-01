@@ -4,11 +4,12 @@ require("engine.vector2")
 Shape2D = Object2D:extend()
 
 --create the shape
-function Shape2D:new(x, y, ...)
+function Shape2D:new(x, y, draw, ...)
     Shape2D.super.new(self, x, y)
     
     local args = {...}
     local vertex = {}
+    self.drawable = draw 
     --get the vertices vector
     assert(#args >= 2, "The shape must have 3 points or more")
     --Vertex points (v_points) which is a table of vectors2 representing each polygon vertex
@@ -43,10 +44,12 @@ end
 
 --Draws the polygon on the screen 
 function Shape2D:draw()
-    for i, v in ipairs(self.v_points) do
-        love.graphics.circle("fill", v.x, v.y, 5)
-    end  
-    love.graphics.print("Position", self.position.x, self.position.x)
-    love.graphics.circle("fill", self.position.x, self.position.y, 5)
-    love.graphics.polygon("line", self.vertex)
+    if self.drawable == true then 
+        for i, v in ipairs(self.v_points) do
+            love.graphics.circle("fill", v.x, v.y, 5)
+        end  
+        love.graphics.print("Position", self.position.x, self.position.x)
+        love.graphics.circle("fill", self.position.x, self.position.y, 5)
+        love.graphics.polygon("line", self.vertex)
+    end
 end
