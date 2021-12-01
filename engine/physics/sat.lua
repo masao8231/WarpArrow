@@ -70,7 +70,7 @@ function S.isColliding(polygon_1, polygon_2)
 
         --after getting our axes, we must find if there's one overlaping to another 
         --if there's no overlap, so there's not having a collision, then returns nil 
-        if p1min > p2max or p2min > p1max then print("nem tá colidindo po") return nil end 
+        if p1min > p2max or p2min > p1max then return nil end 
         --get the overlap's amount to calculate the separation vector 
         local o = math.min(p1max, p2max) - math.min(p1min, p2max)
         if o < overlap then 
