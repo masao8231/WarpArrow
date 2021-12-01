@@ -3,6 +3,7 @@ require("engine.2dobject")
 require("engine.vector2")
 Shape2D = Object2D:extend()
 
+--create the shape
 function Shape2D:new(x, y, ...)
     Shape2D.super.new(self, x, y)
     
@@ -28,7 +29,7 @@ end
 --Move each vertice from the polygon 
 function Shape2D:move(x, y, dt)
     --change the position 
-    self.position = Vector2(self.position.x + x * dt, self.position.y + y * dt)
+    self.position = Vector2(self.position.x + x, self.position.y + y) *dt
     --move every vertice 
     for i, v in ipairs(self.v_points) do
         self.v_points[i] = Vector2(v.x + x * dt, v.y + y * dt)
@@ -42,6 +43,10 @@ end
 
 --Draws the polygon on the screen 
 function Shape2D:draw()
-    love.graphics.circle("fill", self.position.x, self.position.y, 10)
+    for i, v in ipairs(self.v_points) do
+        love.graphics.circle("fill", v.x, v.y, 5)
+    end  
+    love.graphics.print("Position", self.position.x, self.position.x)
+    love.graphics.circle("fill", self.position.x, self.position.y, 5)
     love.graphics.polygon("line", self.vertex)
 end
