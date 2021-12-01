@@ -39,7 +39,6 @@ function Shape2D:move(x, y, dt)
 end
 
 function Shape2D:update(dt)
-
 end
 
 --Draws the polygon on the screen 
@@ -47,8 +46,8 @@ function Shape2D:draw()
     if self.drawable == true then 
         for i, v in ipairs(self.v_points) do
             love.graphics.circle("fill", v.x, v.y, 5)
+            love.graphics.print("Pos("..v.x..","..v.y..")", v.x + 1, v.y + 1)
         end  
-        love.graphics.print("Position", self.position.x, self.position.x)
         love.graphics.circle("fill", self.position.x, self.position.y, 5)
         love.graphics.polygon("line", self.vertex)
     end

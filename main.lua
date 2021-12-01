@@ -5,9 +5,18 @@ require("engine.player")
 require("engine.tile")
 require("engine.shape")
 require("engine.rectangle")
+require("engine.physics.collisionShape")
+require("engine.physics.collisionRect")
 
 map = {
 
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -41,6 +50,9 @@ function love.load()
     shape = Shape2D(100, 200, true, Vector2(200, 100), Vector2(200, 200))
     rectangle = Rectangle2D(100, 200, 30, 40, true)
 
+    c_shape = CollisionShape2D(100 * 2, 200 * 2, true, Vector2(200 * 2, 100 * 2), Vector2(200 * 2, 200* 2))
+    c_rect = CollisionRect2D(100 * 2, 230 * 2, 30, 40, true) 
+
 end
 
 function love.update(dt)
@@ -55,4 +67,6 @@ function love.draw()
     tilemap:draw()
     shape:draw()
     rectangle:draw()
+    c_shape:draw()
+    c_rect:draw()
 end
