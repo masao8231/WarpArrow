@@ -1,7 +1,7 @@
 require("engine.vector2")
 require("engine.sprite")
 require("engine.2dobject")
-require("engine.player")
+require("assets.scripts.player")
 require("engine.tile")
 require("engine.shape")
 require("engine.rectangle")
@@ -62,7 +62,6 @@ function love.update(dt)
     shape:update(dt)
     rectangle:update(dt)
     c_rect:update(dt)
-    print(SAT.isColliding(c_rect, c_shape))
 end
 
 function love.draw()  

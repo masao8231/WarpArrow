@@ -1,5 +1,4 @@
 require("engine.vector2")
-require("engine.helpers")
 
 local S = {}
 

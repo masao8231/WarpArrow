@@ -9,6 +9,9 @@ AnimSprite = Object2D:extend()
 function AnimSprite:new(h, w, x, y, source, duration)
     AnimSprite.super.new(self, x, y)
     self.anim = {}
+    --quad dimensions
+    self.height = h 
+    self.width = w 
 
     --time parameters 
     self.duration = duration or 1

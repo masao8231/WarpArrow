@@ -38,6 +38,7 @@ function Rectangle2D:draw()
     if self.drawable == true then 
         for i, v in ipairs(self.v_points) do 
             love.graphics.circle("fill", v.x, v.y, 5)
+            love.graphics.print("Pos("..v.x..","..v.y..")", v.x + 1, v.y + 1)
         end 
 
         love.graphics.rectangle("line", self.position.x, self.position.y, self.w, self.h)
