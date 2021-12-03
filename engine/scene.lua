@@ -4,7 +4,14 @@ Scene = Object:extend()
 
 --create the scene 
 function Scene:new(...)
-    self.components = {...} or {}
+    local args = {...} or {}
+    self.components = {}
+    --if there's arguments, then, include to components 
+    if #args > 0 then 
+        for i, v in ipairs(args) do 
+            self.components["component_"..i] = v 
+        end
+    end
 end
 
 --Add the component 
@@ -21,7 +28,8 @@ end
 --update all the components 
 function Scene:update(dt)
     --iterate for all the components 
-    for i, v in ipairs(self.components) do 
+    for _, v in pairs(self.components) do 
+        --if the function exists, call it, otherwise do nothing
         if v["update"] ~= nil then 
             v:update(dt)
         end
@@ -31,7 +39,8 @@ end
 --draw all the components 
 function Scene:draw()
     --iterate for all the components 
-    for i, v in ipairs(self.components) do 
+    for _, v in pairs(self.components) do 
+        --if the function exists, call it, otherwise do nothing
         if v["draw"] ~= nil then 
             v:draw()
         end 

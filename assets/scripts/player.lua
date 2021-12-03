@@ -10,7 +10,7 @@ function Player:new(x, y, spritesheet, w, h)
     self.anim = AnimSprite(h, w, x, y, spritesheet)
     
     --creating it's collision shape 
-    self.shape = CollisionRect2D(self.position.x, self.position.y, self.anim.width, self.anim.height, false)
+    self.shape = CollisionRect2D(self.position.x, self.position.y, self.anim.width, self.anim.height, true)
 
 end
 
